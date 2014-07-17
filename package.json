@@ -10,10 +10,18 @@
       "type":  "git",
       "url": "https://github.com/pnowosie/drunken-bishop"
   },
+  "scripts": {
+  },
   "keywords":  [
       "keyart",
       "random art",
       "hash visualization"
   ],
+  "dependencies":  {},
+  "devDependencies": {
+      "mocha": "*"
+    , "should": "*"
+	, "coffee-script": "*"
+  },
   "licence":  "MIT"
 }
