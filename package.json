@@ -1,0 +1,19 @@
+{
+  "name": "drunken_bishop",
+  "version": "0.0.1",
+  "description": "Random ASCII art library for visual representation of keys, hashes, etc.",
+  "main": "app.js",
+  "author": {
+    "name": "Pawel Nowosielski"
+  },
+  "repository": {
+      "type":  "git",
+      "url": "https://github.com/pnowosie/drunken-bishop"
+  },
+  "keywords":  [
+      "keyart",
+      "random art",
+      "hash visualization"
+  ],
+  "licence":  "MIT"
+}
