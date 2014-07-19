@@ -1,10 +1,7 @@
-﻿module.exports = (function () {
+﻿module.exports = (->
 
-    var getWalk = function(buf) {
-        return new Array(4);
-    };
+    getWalk = (buf) ->
+        new Array 4
 
-    return {
-        getWalk: getWalk
-    };
-})();
+    getWalk: getWalk
+)()
