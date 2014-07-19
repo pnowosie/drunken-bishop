@@ -1,7 +1,6 @@
-﻿module.exports = (->
+﻿class Gravity
 
-  getWalk = (buf) ->
+  getWalk: (buf) ->
     new Array 4
 
-  getWalk: getWalk
-)()
+module.exports = new Gravity
