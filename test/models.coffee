@@ -1,9 +1,18 @@
 ﻿should = require 'should'
+gravity = require '../src/gravity'
 
 describe 'Representation objects', ->
     describe 'The Gravity object', ->
-        it 'knows how to convert randomness to list of move directions'
-        it 'one byte produces four directions'
+        NW = 0; NE = 1; SW = 2; SE = 3        
+
+        it 'knows how to convert randomness to list of move directions', ->
+            (gravity?).should.be.ok
+            gravity.should.be.type('object')
+            gravity.getWalk.should.be.a.Function
+            
+        it 'one byte produces four directions', ->
+            gravity.getWalk(0x2d).should.be.an.Array.and.have.lengthOf(4);
+
         it 'gives NW,SE,NW,SE for byte 0xcc'    # 00,11,00,11
         it 'gives NE,SW,NE,SW for byte 0x99'    # 01,10,01,10 
         it 'gives SW,NE,SW,NE for byte 0x66'    # 10,01,10,01
