@@ -11,7 +11,10 @@ describe 'Representation objects', ->
       gravity.getWalk.should.be.a.Function
       
     it 'one byte produces four directions', ->
-      gravity.getWalk([0x2d]).should.be.an.Array.and.have.lengthOf(4);
+      gravity.getWalk([0x2d]).should.be.an.Array.and.have.lengthOf 4
+
+    it 'diamond art walk length should have 20 moves', ->
+      gravity.getWalk([ 0x48, 0xf5, 0xaf, 0x0a, 0xd0 ]).should.have.lengthOf 20
 
     it 'gives NW,SE,NW,SE for byte 0xcc', ->  # 00,11,00,11
       gravity.getWalk([0xcc]).should.equal([NW,SE,NW,SE])

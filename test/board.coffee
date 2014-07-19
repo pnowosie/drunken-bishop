@@ -12,3 +12,5 @@ describe 'The Board', ->
     it 'no footer is displayed if there is not enougth room for footer text'
     it 'start-symbol should be placed in the middle of the board'
     it 'end-symbol should appear instead of starting when walk ends in starting position'
+    it 'Using OpenSSH board Diamond art should be printed correctly'
+    it 'Using Toponce\'s modified board Diamond art should be printed correctly'
