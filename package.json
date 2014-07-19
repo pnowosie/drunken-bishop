@@ -7,21 +7,22 @@
     "name": "Pawel Nowosielski"
   },
   "repository": {
-      "type":  "git",
-      "url": "https://github.com/pnowosie/drunken-bishop"
+    "type": "git",
+    "url": "https://github.com/pnowosie/drunken-bishop"
   },
-  "scripts": {
-  },
-  "keywords":  [
-      "keyart",
-      "random art",
-      "hash visualization"
+  "scripts": {},
+  "keywords": [
+    "keyart",
+    "random art",
+    "hash visualization"
   ],
-  "dependencies":  {},
+  "dependencies": {},
   "devDependencies": {
-      "mocha": "*"
-    , "should": "*"
-    , "coffee-script": "*"
+    "coffee-script": "^1.7.1",
+    "gulp": "^3.8.6",
+    "gulp-mocha": "^0.5.1",
+    "mocha": "^1.20.1",
+    "should": "^4.0.4"
   },
-  "licence":  "MIT"
+  "licence": "MIT"
 }
