@@ -1,7 +1,7 @@
 ﻿module.exports = (->
 
-    getWalk = (buf) ->
-        new Array 4
+  getWalk = (buf) ->
+    new Array 4
 
-    getWalk: getWalk
+  getWalk: getWalk
 )()
