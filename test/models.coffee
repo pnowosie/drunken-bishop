@@ -1,9 +1,11 @@
 ﻿should = require 'should'
-gravity = require '../build/gravity'
+Gravity = require '../build/gravity'
 
 describe 'Representation objects', ->
   describe 'The Gravity object', ->
-    NW = 0; NE = 1; SW = 2; SE = 3    
+    NW = 0; NE = 1; SW = 2; SE = 3
+    diamond_art = new Buffer [ 0x48, 0xf5, 0xaf, 0x0a, 0xd0 ]
+    gravity = new Gravity
 
     it 'knows how to convert randomness to list of move directions', ->
       (gravity?).should.be.ok
@@ -14,7 +16,7 @@ describe 'Representation objects', ->
       gravity.getWalk([0x2d]).should.be.an.Array.and.have.lengthOf 4
 
     it 'diamond art walk length should have 20 moves', ->
-      gravity.getWalk([ 0x48, 0xf5, 0xaf, 0x0a, 0xd0 ]).should.have.lengthOf 20
+      gravity.getWalk(diamond_art).should.have.lengthOf 20
 
     it 'gives NW,SE,NW,SE for byte 0xcc', ->  # 00,11,00,11
       gravity.getWalk([0xcc]).should.equal([NW,SE,NW,SE])

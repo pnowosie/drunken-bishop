@@ -33,13 +33,16 @@
     <Compile Include="app.js" />
     <Compile Include="gulpfile.coffee" />
     <Compile Include="gulpfile.js" />
-    <Compile Include="src\gravity.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\gravity.coffee" />
+    <Content Include="src\printer.coffee" />
+    <Content Include="test\diamond-art.txt" />
     <Content Include="test\models.coffee" />
     <Content Include="test\move.coffee" />
     <Content Include="test\board.coffee" />
     <Content Include="test\mocha.opts" />
+    <Content Include="test\printer.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
