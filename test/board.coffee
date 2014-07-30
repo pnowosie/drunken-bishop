@@ -23,7 +23,13 @@ describe 'The Board', ->
       my_b = new Board 7, 5, 0
       my_b.start.should.equal 0
 
-    it 'should behave like an Array'
+    it 'should behave like an Array', ->
+      empty = (x for x in b)
+      empty.should.be.empty
+
+      my_b = new Board 7, 5
+      my_b[4] = 1
+      my_b[2] = 3
 
   describe 'OpenSSH board', ->
     b = Board.OpenSSH()
