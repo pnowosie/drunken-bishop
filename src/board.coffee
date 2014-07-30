@@ -1,0 +1,2 @@
+﻿
+class Board extends Array

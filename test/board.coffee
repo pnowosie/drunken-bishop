@@ -2,4 +2,6 @@
 
 describe 'The Board', ->
   describe 'Board printing', ->
-    it 'board should have correct size'
+    it 'board should have correct size', ->
+      a = null
+      should.be.ok a
