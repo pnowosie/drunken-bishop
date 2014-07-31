@@ -7,5 +7,10 @@ class Board extends Array
   @OpenSSH: -> new Board 17, 9
   @Toponce: -> new Board 19, 11
 
+  boardPos: (index) ->
+    [ index % @width, index / @width |0 ]
+
+  arrayPos: (w, h) -> w + @width * h
+
 
 module.exports = Board
