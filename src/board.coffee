@@ -18,10 +18,10 @@ class Board extends Array
     NW = 0; NE = 1; SW = 2; SE = 3
 
     switch direction
-      when NW then
-      when NE then
-      when SW then
-      when SE then
-    undefined
+      when NW then --last_x; --last_y
+      when NE then --last_x; ++last_y
+      when SW then ++last_x; --last_y
+      when SE then ++last_x; ++last_y
+    @end = @arrayPos last_x, last_y
 
 module.exports = Board
