@@ -19,9 +19,10 @@ class Board extends Array
 
     switch direction
       when NW then --last_x; --last_y
-      when NE then --last_x; ++last_y
-      when SW then ++last_x; --last_y
+      when NE then ++last_x; --last_y
+      when SW then --last_x; ++last_y
       when SE then ++last_x; ++last_y
     @end = @arrayPos last_x, last_y
+    @[@end] = 1 + (@[@end] or 0)
 
 module.exports = Board
