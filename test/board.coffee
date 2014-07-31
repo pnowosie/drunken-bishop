@@ -3,7 +3,7 @@ Board = require '../build/board'
 
 describe 'The Board', ->
   describe 'Board object', ->
-    expected_start = 4+7*3
+    expected_start = 3+7*2
     b = new Board 7, 5
 
     it 'should expose Board properties', ->
@@ -36,16 +36,16 @@ describe 'The Board', ->
 
   describe 'Convert between 1D <-> 2D positions', ->
     it 'should correctly convert board center to array index', ->
-      (Board.OpenSSH().arrayPos 9, 5).should.equal 9 + 17*5
-      (Board.Toponce().arrayPos 10, 6).should.equal 10 + 19*6
+      (Board.OpenSSH().arrayPos 8, 4).should.equal 8 + 17*4
+      (Board.Toponce().arrayPos 9, 5).should.equal 9 + 19*5
 
     it 'should correctly convert array index to board position', ->
       sshB = Board.OpenSSH()
-      (sshB.boardPos sshB.start).should.eql [9, 5]
+      (sshB.boardPos sshB.start).should.eql [8, 4]
       topB = Board.Toponce()
-      (topB.boardPos topB.start).should.eql [10, 6]
-      myB = new Board 7, 5
-      (myB.boardPos myB.start).should.eql [4, 3]
+      (topB.boardPos topB.start).should.eql [9, 5]
+      myB = new Board 3, 3
+      (myB.boardPos myB.start).should.eql [1, 1]
 
   describe 'OpenSSH board', ->
     b = Board.OpenSSH()
@@ -55,7 +55,7 @@ describe 'The Board', ->
     it 'should have correct size and starting position', ->
       b.width.should.equal 17
       b.height.should.equal 9
-      b.start.should.equal 9+17*5
+      b.start.should.equal 8+17*4
 
   describe 'Toponce\'s board', ->
     b = Board.Toponce()
@@ -65,4 +65,4 @@ describe 'The Board', ->
     it 'should have correct size and starting position', ->
       b.width.should.equal 19
       b.height.should.equal 11
-      b.start.should.equal 10+19*6
+      b.start.should.equal 9+19*5

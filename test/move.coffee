@@ -1,11 +1,33 @@
 ﻿should = require 'should'
+Board = require '../build/board'
 
 describe 'Walking on the board', ->
+  NW = 0; NE = 1; SW = 2; SE = 3
   describe 'Walking from starting position', ->
-    it 'move NW should place the bishop in correct field'
-    it 'move NE should place the bishop in correct field'
-    it 'move SW should place the bishop in correct field'
-    it 'move SE should place the bishop in correct field'
+    it 'move NW should place the bishop in correct field', ->
+      b = new Board 3,3
+      b.makeMove NW
+      (''+b).should.equal '1,,,,,,,,'
+      b.end.should.equal 0
+
+    it 'move NE should place the bishop in correct field', ->
+      b = new Board 3,3
+      b.makeMove NE
+      (''+b).should.equal ',,1,,,,,,'
+      b.end.should.equal 2
+
+    it 'move SW should place the bishop in correct field', ->
+      b = new Board 3,3
+      b.makeMove SW
+      (''+b).should.equal ',,,,,,1,,'
+      b.end.should.equal 6
+
+    it 'move SE should place the bishop in correct field', ->
+      b = new Board 3,3
+      b.makeMove SE
+      (''+b).should.equal ',,,,,,,,1'
+      b.end.should.equal 8
+
 
   describe 'Walking from "a" field', ->
     it 'move NW should leave bishop unmoved'
