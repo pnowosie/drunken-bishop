@@ -30,10 +30,29 @@ describe 'Walking on the board', ->
 
 
   describe 'Walking from "a" field', ->
-    it 'move NW should leave bishop unmoved'
-    it 'move NE should place the bishop on second top field'
-    it 'move SW should place the bishop second row left boarder'
-    it 'move SE should place the bishop one field from corner'
+    it 'move NW should leave bishop unmoved', ->
+      b = new Board 3,3,0
+      b.makeMove NW
+      (''+b).should.equal '1,,,,,,,,'
+      b.end.should.equal 0
+
+    it 'move NE should place the bishop on second top field', ->
+      b = new Board 3,3,0
+      b.makeMove NE
+      (''+b).should.equal ',1,,,,,,,'
+      b.end.should.equal 1
+
+    it 'move SW should place the bishop second row left boarder', ->
+      b = new Board 3,3,0
+      b.makeMove SW
+      (''+b).should.equal ',,,1,,,,,'
+      b.end.should.equal 3
+
+    it 'move SE should place the bishop one field from corner', ->
+      b = new Board 3,3,0
+      b.makeMove SE
+      (''+b).should.equal ',,,,1,,,,'
+      b.end.should.equal 4
 
   describe 'Walking from "b" field', ->
     it 'move NE should leave bishop unmoved'

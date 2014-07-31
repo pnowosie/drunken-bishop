@@ -22,6 +22,10 @@ class Board extends Array
       when NE then ++last_x; --last_y
       when SW then --last_x; ++last_y
       when SE then ++last_x; ++last_y
+    last_x = 0 if last_x < 0
+    last_x = @width if last_x > @width
+    last_y = 0 if last_y < 0
+    last_y = @height if last_y > @height
     @end = @arrayPos last_x, last_y
     @[@end] = 1 + (@[@end] or 0)
 
