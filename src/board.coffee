@@ -4,6 +4,10 @@ class Board extends Array
     @start = (@width >> 1) + @width * (@height >> 1) unless @start?
     @length = @width * @height
 
+  walk: (directions) ->
+    @makeMove dir for dir in directions
+    undefined
+
   @OpenSSH: -> new Board 17, 9
   @Toponce: -> new Board 19, 11
 
@@ -28,5 +32,6 @@ class Board extends Array
 
     @end = @arrayPos last_x, last_y
     @[@end] = 1 + (@[@end] or 0)
+
 
 module.exports = Board
