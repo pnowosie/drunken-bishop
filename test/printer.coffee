@@ -1,4 +1,5 @@
 ﻿should = require 'should'
+Board = require '../build/board'
 Printer = require '../build/printer'
 
 describe 'Printer', ->
@@ -25,6 +26,11 @@ describe 'Printer', ->
       p.Coins.join('').should.be.equal ' .o+=*BOX@%&#/^'
 
   describe 'Printing board', ->
+    it 'prints empty board', ->
+      b = new Board 7, 3
+      p = new Printer ' .oxSE'
+      console.log p.print b
+
     it 'each row should have the same length equals the board width'
     it 'EOL charactes should be handled independent from environment'
     it 'should print boarder around with chars +-|'

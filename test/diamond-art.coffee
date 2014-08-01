@@ -1,6 +1,7 @@
 ﻿should = require 'should'
 Gravity = require '../build/gravity'
 Board = require '../build/board'
+Printer = require '../build/printer'
 
 describe 'Diamond art', ->
   NW = 0; NE = 1; SW = 2; SE = 3
@@ -28,4 +29,9 @@ describe 'Diamond art', ->
       boardD.should.eql positions
 
   describe 'Printed art string', ->
-    it 'Diamond-art printout string'
+    it 'Diamond-art printout string', ->
+      gravity = new Gravity
+      b = Board.OpenSSH()
+      b.walk gravity.getWalk diamond
+      p = new Printer ' .oSE'
+      console.log p.print b
