@@ -1,7 +1,5 @@
 ﻿class Gravity
 
-  NW = 0; NE = 1; SW = 2; SE = 3
-
   getWalk: (buf) ->
     directions = []
     for byte in buf
