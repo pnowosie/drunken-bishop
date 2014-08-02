@@ -16,6 +16,13 @@ class Board extends Array
 
   arrayPos: (w, h) -> w + @width * h
 
+  get: (w, h) ->
+    w = @arrayPos w, h if h?
+    r = @[w] or 0
+    if w is @start then r= -2
+    if w is @end then r= -1
+    r
+
   makeMove: (direction) ->
     @end ?= @start
     [last_x, last_y] = @boardPos @end

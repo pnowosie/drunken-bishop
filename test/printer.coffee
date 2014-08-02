@@ -26,10 +26,15 @@ describe 'Printer', ->
       p.Coins.join('').should.be.equal ' .o+=*BOX@%&#/^'
 
   describe 'Printing board', ->
+    empty = '+-------+\n'+
+            '|       |\n'+
+            '|   S   |\n'+
+            '|       |\n'+
+            '+-------+\n'
     it 'prints empty board', ->
       b = new Board 7, 3
       p = new Printer ' .oxSE'
-      console.log p.print b
+      empty.should.equal p.print b
 
     it 'each row should have the same length equals the board width'
     it 'EOL charactes should be handled independent from environment'

@@ -38,6 +38,7 @@
     <Content Include="src\board.coffee" />
     <Content Include="src\gravity.coffee" />
     <Content Include="src\printer.coffee" />
+    <Content Include="test\diamond-art.coffee" />
     <Content Include="test\diamond-art.txt" />
     <Content Include="test\models.coffee" />
     <Content Include="test\move.coffee" />

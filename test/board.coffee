@@ -47,6 +47,41 @@ describe 'The Board', ->
       myB = new Board 3, 3
       (myB.boardPos myB.start).should.eql [1, 1]
 
+  describe 'Get method should return correct values', ->
+    b = new Board 3, 3
+    b[0] = 5; b[1] = 2; b[3] = 0; b[6] = 0; b[7] = 2; b[8] = 3
+    b.end = 6
+
+    it 'Value test - array coords', ->
+      5.should.equal b.get 0
+      2.should.equal b.get 1
+      0.should.equal b.get 2
+      0.should.equal b.get 3
+      0.should.equal b.get 5
+      2.should.equal b.get 7
+      3.should.equal b.get 8
+
+    it 'Value test - board coords', ->
+      5.should.equal b.get 0, 0
+      2.should.equal b.get 1, 0
+      0.should.equal b.get 2, 0
+      0.should.equal b.get 0, 1
+      0.should.equal b.get 2, 1
+      2.should.equal b.get 1, 2
+      3.should.equal b.get 2, 2
+
+    it 'Start and End test', ->
+      (-2).should.equal b.get 4
+      (-2).should.equal b.get 1, 1
+      (-1).should.equal b.get 6
+      (-1).should.equal b.get 0, 2
+
+    it 'End position goes before start', ->
+      my_b = new Board 3, 3, 1
+      1.should.equal my_b.start
+      my_b.end = 1
+      (-1).should.equal my_b.get 1
+
   describe 'OpenSSH board', ->
     b = Board.OpenSSH()
     it 'should expose static property', ->

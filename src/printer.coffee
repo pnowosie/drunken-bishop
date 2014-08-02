@@ -7,7 +7,7 @@
     bs = @printTitle board.width
     for h in [0...board.height]
       bs += '|'
-      cc = (@Coins[ board[board.arrayPos w,h] or 0 ] for w in [0...board.width])
+      cc = (@getCoin board.get w, h for w in [0...board.width])
       bs += cc.join ''
       bs += "|\n"
     bs += @printTitle board.width
@@ -15,5 +15,12 @@
 
   printTitle: (width, text) ->
     '+'.concat (new Array(1+width).join '-'), "+\n"
+
+  getCoin: (v) ->
+    if v >= @Coins.length then v = a.length-1
+
+    if v == -2 then @Coins.start_symbol
+    else if v == -1 then @Coins.end_symbol
+    else @Coins[v]
 
 module.exports = Printer

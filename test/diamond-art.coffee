@@ -29,9 +29,21 @@ describe 'Diamond art', ->
       boardD.should.eql positions
 
   describe 'Printed art string', ->
+    diamondArt= '+-----------------+\n'+
+                '|        .        |\n'+
+                '|       . .       |\n'+
+                '|      .   .      |\n'+
+                '|     o .   .     |\n'+
+                '|    . E S   .    |\n'+
+                '|     .     .     |\n'+
+                '|      .   .      |\n'+
+                '|       . .       |\n'+
+                '|        .        |\n'+
+                '+-----------------+\n'
+
     it 'Diamond-art printout string', ->
       gravity = new Gravity
       b = Board.OpenSSH()
       b.walk gravity.getWalk diamond
       p = new Printer ' .oSE'
-      console.log p.print b
+      diamondArt.should.equal p.print b
