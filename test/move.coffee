@@ -63,18 +63,66 @@ describe 'Walking on the board', ->
       p.should.eql start: 0, direction: SE, x: 1, y: 1, end: 4, value: 1
 
   describe 'Walking from "b" field', ->
-    it 'move NE should leave bishop unmoved'
-    it 'move NW should place the bishop on but-last top field'
-    it 'move SE should place the bishop second row boarder'
-    it 'move SW should place the bishop one field from corner'
+    it 'move NE should leave bishop unmoved', ->
+      b = new Board 3,3,2
+      p = b.makeMove NE
+      (''+b).should.equal ',,1,,,,,,'
+      b.end.should.equal 2
+      p.should.eql start: 2, direction: NE, x: 2, y: 0, end: 2, value: 1
 
-  describe 'Walking from "c" field', ->
-    it 'move SE should leave bishop unmoved'
-    it 'move SW should place the bishop on but-last bottom field'
-    it 'move NE should place the bishop but-last row boarder'
-    it 'move NW should place the bishop one field from corner'
+    it 'move NW should place the bishop on but-last top field', ->
+      b = new Board 3,3,2
+      p = b.makeMove NW
+      (''+b).should.equal ',1,,,,,,,'
+      b.end.should.equal 1
+      p.should.eql start: 2, direction: NW, x: 1, y: 0, end: 1, value: 1
+
+    it 'move SE should place the bishop second row boarder', ->
+      b = new Board 3,3,2
+      p = b.makeMove SE
+      (''+b).should.equal ',,,,,1,,,'
+      b.end.should.equal 5
+      p.should.eql start: 2, direction: SE, x: 2, y: 1, end: 5, value: 1
+
+    it 'move SW should place the bishop one field from corner', ->
+      b = new Board 3,3,2
+      p = b.makeMove SW
+      (''+b).should.equal ',,,,1,,,,'
+      b.end.should.equal 4
+      p.should.eql start: 2, direction: SW, x: 1, y: 1, end: 4, value: 1
+
 
   describe 'Walking from "d" field', ->
+    it 'move SE should leave bishop unmoved', ->
+      b = new Board 3,3,8
+      p = b.makeMove SE
+      (''+b).should.equal ',,,,,,,,1'
+      b.end.should.equal 8
+      p.should.eql start: 8, direction: SE, x: 2, y: 2, end: 8, value: 1
+
+    it 'move SW should place the bishop on but-last bottom field', ->
+      b = new Board 3,3,8
+      p = b.makeMove SW
+      (''+b).should.equal ',,,,,,,1,'
+      b.end.should.equal 7
+      p.should.eql start: 8, direction: SW, x: 1, y: 2, end: 7, value: 1
+
+    it 'move NE should place the bishop but-last row boarder', ->
+      b = new Board 3,3,8
+      p = b.makeMove NE
+      (''+b).should.equal ',,,,,1,,,'
+      b.end.should.equal 5
+      p.should.eql start: 8, direction: NE, x: 2, y: 1, end: 5, value: 1
+
+    it 'move NW should place the bishop one field from corner', ->
+      b = new Board 3,3,8
+      p = b.makeMove NW
+      (''+b).should.equal ',,,,1,,,,'
+      b.end.should.equal 4
+      p.should.eql start: 8, direction: NW, x: 1, y: 1, end: 4, value: 1
+
+
+  describe 'Walking from "c" field', ->
     it 'move SW should leave bishop unmoved', ->
       b = new Board 3,3,6
       p = b.makeMove SW
@@ -164,10 +212,33 @@ describe 'Walking on the board', ->
 
 
   describe 'Walking from bottom boarder', ->
-    it 'move SW should place the bishop one field left'
-    it 'move SE should place the bishop one field right'
-    it 'move NW should place the bishop in correct field'
-    it 'move NE should place the bishop in correct field'
+    it 'move SW should place the bishop one field left', ->
+      b = new Board 3,3,7
+      p = b.makeMove SW
+      (''+b).should.equal ',,,,,,1,,'
+      b.end.should.equal 6
+      p.should.eql start: 7, direction: SW, x: 0, y: 2, end: 6, value: 1
+
+    it 'move SE should place the bishop one field right', ->
+      b = new Board 3,3,7
+      p = b.makeMove SE
+      (''+b).should.equal ',,,,,,,,1'
+      b.end.should.equal 8
+      p.should.eql start: 7, direction: SE, x: 2, y: 2, end: 8, value: 1
+
+    it 'move NW should place the bishop in correct field', ->
+      b = new Board 3,3,7
+      p = b.makeMove NW
+      (''+b).should.equal ',,,1,,,,,'
+      b.end.should.equal 3
+      p.should.eql start: 7, direction: NW, x: 0, y: 1, end: 3, value: 1
+
+    it 'move NE should place the bishop in correct field', ->
+      b = new Board 3,3,7
+      p = b.makeMove NE
+      (''+b).should.equal ',,,,,1,,,'
+      b.end.should.equal 5
+      p.should.eql start: 7, direction: NE, x: 2, y: 1, end: 5, value: 1
 
   describe 'Walking from right boarder', ->
     it 'move NE should place the bishop one field up', ->
