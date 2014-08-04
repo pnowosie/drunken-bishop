@@ -44,14 +44,3 @@ describe 'Representation objects', ->
 
     it 'gives NW,NE,NW,NE for byte 0x44', ->  # 00,01,00,01
        gravity.getWalk([0x44]).should.eql([NW,NE,NW,NE])
-
-  describe 'Walk representation - walklog object', ->
-    it 'knows nothing about starting and ending positions'
-    it 'represents only list of move directions'
-
-  describe 'Board representation - state object', ->
-    it 'board should be serialized to the state object'
-    it 'state object should provide starting and ending position and cardinality of visited fields'
-    it 'should be posible to load board from state object'
-    it 'should be posible to add move to loaded board'
-    it 'adding moves to board can change end-position no starting one'

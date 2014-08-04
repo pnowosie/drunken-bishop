@@ -37,8 +37,15 @@ class Board extends Array
     last_x = Math.max 0, (Math.min @width-1, last_x)
     last_y = Math.max 0, (Math.min @height-1, last_y)
 
+    path = start: @end, direction: direction, x: last_x, y: last_y 
+
     @end = @arrayPos last_x, last_y
     @[@end] = 1 + (@[@end] or 0)
+
+    path.end = @end
+    path.value = @[@end]
+    @walkDebugger path if @walkDebugger?
+    path
 
 
 module.exports = Board

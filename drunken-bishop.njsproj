@@ -38,6 +38,7 @@
     <Content Include="src\board.coffee" />
     <Content Include="src\gravity.coffee" />
     <Content Include="src\printer.coffee" />
+    <Content Include="src\random-art.coffee" />
     <Content Include="test\diamond-art.coffee" />
     <Content Include="test\diamond-art.txt" />
     <Content Include="test\models.coffee" />
@@ -45,6 +46,7 @@
     <Content Include="test\board.coffee" />
     <Content Include="test\mocha.opts" />
     <Content Include="test\printer.coffee" />
+    <Content Include="test\random-art.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
