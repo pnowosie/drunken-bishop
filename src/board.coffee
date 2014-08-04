@@ -44,7 +44,7 @@ class Board extends Array
 
     path.end = @end
     path.value = @[@end]
-    @walkDebugger path if @walkDebugger?
+    @walkDebugger path if typeof @walkDebugger is 'function'
     path
 
 

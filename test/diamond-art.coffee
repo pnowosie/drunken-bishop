@@ -47,3 +47,20 @@ describe 'Diamond art', ->
       b.walk gravity.getWalk diamond
       p = new Printer ' .oSE'
       diamondArt.should.equal p.print b
+
+
+    it 'OpenSSH board known walk test', ->
+      # From section "2.3 Coverage" of [paper](http://www.dirk-loss.de/sshvis/drunken_bishop.pdf)
+      do (b = Board.OpenSSH(), 
+          g = new Gravity,
+          data = [0xfc, 0x94, 0xb0, 0xc1, 0xe5, 0xb0, 0x98, 0x7c, 0x58, 0x43, 0x99, 0x76, 0x97, 0xee, 0x9f, 0xb7],
+          walk = []) ->
+
+        b.walkDebugger = (path) -> 
+          walk.push path.start if walk.length is 0
+          walk.push path.end
+        b.walk g.getWalk data
+
+        walk.should.eql [76, 58, 76, 94, 112, 94, 78, 62, 78, 60, 42, 60, 76, 60, 42, 24, 42, 26, 10, 26, 44,
+                        26, 8, 26, 42, 24, 40, 24, 40, 22, 40, 58, 42, 24, 40, 24, 8, 26, 8, 7, 8, 9, 25, 9, 25,
+                        41, 25, 43, 27, 45, 29, 13, 29, 45, 63, 79, 97, 115, 133, 117, 133, 151, 135, 152, 151]
