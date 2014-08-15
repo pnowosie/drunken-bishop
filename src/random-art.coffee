@@ -10,11 +10,16 @@ module.exports = class RandomArt
     data = @toRawBytes data if typeof data is 'string'
     [board, printer] = @createStandardBoard opt.type
 
+    board.walk Gravity.getWalk data
+    printer.print board, opt
+
   @createStandardBoard: (type) ->
     # OpenSSH board is default
     switch type
-      when 'toponce' then [ Board.Toponce(), new Printer ' .^:li?(fxXZ#MW&8%@SE' ]
-      else [ Board.OpenSSH(), new Printer ' .o+=*BOX@%&#/^SE' ]
+      when 'toponce'
+        [ Board.Toponce(), new Printer ' .^:li?(fxXZ#MW&8%@SE' ]
+      else
+        [ Board.OpenSSH(), new Printer ' .o+=*BOX@%&#/^SE' ]
 
   @toRawBytes: (str, fmt) ->
     if typeof str isnt 'string'

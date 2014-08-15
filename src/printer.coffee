@@ -4,13 +4,13 @@
     [@Coins.start_symbol, @Coins.end_symbol] = coins[-2..-1]
 
   print: (board, s) ->
-    bs = @printTitle board.width
+    bs = @printTitle board.width, s?.header
     for h in [0...board.height]
       bs += '|'
       cc = (@getCoin board.get w, h for w in [0...board.width])
       bs += cc.join ''
       bs += "|\n"
-    bs += @printTitle board.width
+    bs += @printTitle board.width, s?.footer
     bs
 
   printTitle: (width, text) ->
