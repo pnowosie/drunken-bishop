@@ -7,7 +7,11 @@ describe 'Diamond art', ->
   NW = 0; NE = 1; SW = 2; SE = 3
   diamond = [ 0x48, 0xf5, 0xaf, 0x0a, 0xd0 ]
   walkDir = [ NW, SW, NW, NE, NE, NE, SE, SE, SE, SE, SW, SW, SW, SW, NW, NW, NW, NW, NE, SE ]
-  boardD  = [ 8, 24, 26, 40, 44, 56, 58, 62, 72, 74, 80, 90, 96, 108, 112, 126, 128, 144 ]
+
+  pathDebugger = (walk) ->
+    (path) -> 
+      walk.push path.start if walk.length is 0
+      walk.push path.end
 
 
   describe 'Gravity object', ->
@@ -17,14 +21,19 @@ describe 'Diamond art', ->
 
   describe 'Board state object', ->
     it 'Diamond-art state object', ->
-      b = Board.OpenSSH()
-      b.walk Gravity.getWalk diamond
+      do (b = Board.OpenSSH(), 
+          g = Gravity,
+          data = diamond,
+          walk = []) ->
 
-      b.start.should.equal 8 + 17*4
-      b.end.should.equal 6 + 17*4
-      positions = (x for v,x in b when v?)
-      positions.sort( (a,b) -> a-b )
-      boardD.should.eql positions
+        path = [ 76, 58, 74, 56, 40, 24, 8, 26, 44, 62, 80, 96, 112, 128, 144, 126, 108, 90, 72, 56, 74 ]
+
+        b.walkDebugger = pathDebugger walk
+        b.walk Gravity.getWalk data
+
+        b.start.should.equal 8 + 17*4
+        b.end.should.equal 6 + 17*4
+        path.should.eql walk
 
   describe 'Printed art string', ->
     diamondArt= '+-----------------+\n'+
@@ -53,9 +62,7 @@ describe 'Diamond art', ->
           data = [0xfc, 0x94, 0xb0, 0xc1, 0xe5, 0xb0, 0x98, 0x7c, 0x58, 0x43, 0x99, 0x76, 0x97, 0xee, 0x9f, 0xb7],
           walk = []) ->
 
-        b.walkDebugger = (path) -> 
-          walk.push path.start if walk.length is 0
-          walk.push path.end
+        b.walkDebugger = pathDebugger walk
         b.walk g.getWalk data
 
         walk.should.eql [76, 58, 76, 94, 112, 94, 78, 62, 78, 60, 42, 60, 76, 60, 42, 24, 42, 26, 10, 26, 44,
