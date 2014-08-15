@@ -50,12 +50,30 @@ describe 'Printer', ->
       p = new Printer ' .oxSE'
       empty.should.equal p.print b
 
-    it 'each row should have the same length equals the board width'
-    it 'EOL charactes should be handled independent from environment'
-    it 'should print boarder around with chars +-|'
-    it 'start-symbol should be placed in the middle of the board'
-    it 'end-symbol should appear instead of starting when walk ends in starting position'
+    it 'each row should have the same length equals the board width', ->
+      boardWidth = 9; boardHeight = 7
+      expectedWidth = 1 + boardWidth + 1   # boarder + width + boarder
+      expectedHeight = 1 + boardHeight + 1 # boarder + height + boarder
+      b = new Board boardWidth, boardHeight
+      p = new Printer ' .oxSE'
+      lines = (p.print b).split '\n'
+      lines.pop() # get last empty line out
+      expectedHeight.should.equal lines.length
+      expectedWidth.should.equal line.length for line in lines
 
-  describe 'Custom art printing', ->
-    it 'Using OpenSSH board Diamond art should be printed correctly'
-    it 'Using Toponce\'s modified board Diamond art should be printed correctly'
+    it 'start-symbol should be placed in the middle of the board', ->
+      b = new Board 3, 3
+      p = new Printer ' .oxSE'
+      lines = (p.print b).split '\n'
+      line = lines[1 + 3//2] # boarder and middle of height
+      char = line[1 + 3//2] # boarder and middle of width
+      'S'.should.equal char
+
+    it 'end-symbol should appear instead of starting when walk ends in starting position', ->
+      b = new Board 3, 3
+      b.walk [2, 1] # SW, NE
+      p = new Printer ' .oxSE'
+      lines = (p.print b).split '\n'
+      line = lines[1 + 3//2] # boarder and middle of height
+      char = line[1 + 3//2] # boarder and middle of width
+      'E'.should.equal char

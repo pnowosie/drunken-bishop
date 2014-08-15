@@ -1,6 +1,6 @@
 {
   "name": "drunken_bishop",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Random ASCII art library for visual representation of keys, hashes, etc.",
   "main": "app.js",
   "author": {
