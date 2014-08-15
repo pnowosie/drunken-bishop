@@ -3,12 +3,26 @@ Board = require '../build/board'
 Printer = require '../build/printer'
 
 describe 'Printer', ->
+  p = new Printer ' .o+=*BOX@%&#/^SE'
   describe 'Printing header and footer', ->
-    it 'no title is displayed if there is not enougth room for text'
-    it 'no title is displayed if text to display is empty'
-    it 'should display title in the middle of the boarder'
-    it 'should be at least one "-" on each side of title'
-    it 'should display horizontal boarder of given length'
+    it 'should display horizontal boarder of given length', ->
+      '+---+\n'.should.equal p.printTitle 3
+
+    it 'no title is displayed if text to display is empty', ->
+      '+---+\n'.should.equal p.printTitle 3
+
+    it 'no title is displayed if there is not enougth room for text', ->
+      '+-----+\n'.should.equal p.printTitle 5, 'ab' # Minimum is '+-[a]-+'
+
+    it 'should be at least one "-" on each side of title', ->
+      '+-----+\n'.should.equal p.printTitle 5, 'ab' # Minimum is '+-[a]-+'
+      '+-[a]-+\n'.should.equal p.printTitle 5, 'a'
+      '+-[a]--+\n'.should.equal p.printTitle 6, 'a'
+
+    it 'should display title in the middle of the boarder', ->
+      '+-[a]-+\n'.should.equal p.printTitle 5, 'a'
+
+
 
   describe 'Printer coins characters', ->
     p = new Printer ' .o+=*BOX@%&#/^SE'

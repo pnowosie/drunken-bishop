@@ -14,7 +14,14 @@
     bs
 
   printTitle: (width, text) ->
-    '+'.concat (new Array(1+width).join '-'), "+\n"
+    if not text or width-2 < text.length+2
+      return '+'.concat (new Array(1+width).join '-'), "+\n"
+
+    minusCnt = width-2 -text.length
+    arr = new Array 1+ minusCnt // 2
+    title = '+'.concat (arr.join '-'), '[', text, ']', (arr.join '-')
+    title += '-' if title.length is width
+    title += '+\n'
 
   getCoin: (v) ->
     if v >= @Coins.length then v = a.length-1

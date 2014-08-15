@@ -12,15 +12,13 @@ describe 'Diamond art', ->
 
   describe 'Gravity object', ->
     it 'converts binary to directions', ->
-      gravity = new Gravity
-      dir = gravity.getWalk diamond
+      dir = Gravity.getWalk diamond
       walkDir.should.eql dir
 
   describe 'Board state object', ->
     it 'Diamond-art state object', ->
-      gravity = new Gravity
       b = Board.OpenSSH()
-      b.walk gravity.getWalk diamond
+      b.walk Gravity.getWalk diamond
 
       b.start.should.equal 8 + 17*4
       b.end.should.equal 6 + 17*4
@@ -42,9 +40,8 @@ describe 'Diamond art', ->
                 '+-----------------+\n'
 
     it 'Diamond-art printout string', ->
-      gravity = new Gravity
       b = Board.OpenSSH()
-      b.walk gravity.getWalk diamond
+      b.walk Gravity.getWalk diamond
       p = new Printer ' .oSE'
       diamondArt.should.equal p.print b
 
@@ -52,7 +49,7 @@ describe 'Diamond art', ->
     it 'OpenSSH board known walk test', ->
       # From section "2.3 Coverage" of [paper](http://www.dirk-loss.de/sshvis/drunken_bishop.pdf)
       do (b = Board.OpenSSH(), 
-          g = new Gravity,
+          g = Gravity,
           data = [0xfc, 0x94, 0xb0, 0xc1, 0xe5, 0xb0, 0x98, 0x7c, 0x58, 0x43, 0x99, 0x76, 0x97, 0xee, 0x9f, 0xb7],
           walk = []) ->
 

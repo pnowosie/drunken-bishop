@@ -8,9 +8,13 @@ module.exports = class RandomArt
     opt.type = 'openssh' unless opt.type?
 
     data = @toRawBytes data if typeof data is 'string'
+    [board, printer] = @createStandardBoard opt.type
 
-
-
+  @createStandardBoard: (type) ->
+    # OpenSSH board is default
+    switch type
+      when 'toponce' then [ Board.Toponce(), new Printer ' .^:li?(fxXZ#MW&8%@SE' ]
+      else [ Board.OpenSSH(), new Printer ' .o+=*BOX@%&#/^SE' ]
 
   @toRawBytes: (str, fmt) ->
     if typeof str isnt 'string'
@@ -19,7 +23,7 @@ module.exports = class RandomArt
     new Buffer str, fmt
 
   @discoverFormat: (str) ->
-    # if hex.startsWith '0x', @see http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+    # if hex.startsWith '0x', more 'stackoverflow: javascript startsWith'
     hex = if (str.lastIndexOf '0x', 0) is 0 then str[2..]
     else str
 

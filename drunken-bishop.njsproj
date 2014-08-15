@@ -41,7 +41,7 @@
     <Content Include="src\random-art.coffee" />
     <Content Include="test\diamond-art.coffee" />
     <Content Include="test\diamond-art.txt" />
-    <Content Include="test\models.coffee" />
+    <Content Include="test\gravity.coffee" />
     <Content Include="test\move.coffee" />
     <Content Include="test\board.coffee" />
     <Content Include="test\mocha.opts" />
